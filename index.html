@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI Worker Blueprint — Free Download</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero h1 .highlight {
+            color: #ffd700;
+            display: block;
+        }
+
+        .hero-subheadline {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        /* Ebook Mockup */
+        .ebook-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .ebook-mockup {
+            width: 280px;
+            height: 380px;
+            background: linear-gradient(145deg, #2d2d44 0%, #1a1a2e 100%);
+            border-radius: 12px;
+            box-shadow: 
+                0 25px 50px rgba(0,0,0,0.3),
+                0 10px 20px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            position: relative;
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.3s ease;
+        }
+
+        .ebook-mockup:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.02);
+        }
+
+        .ebook-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #ffd700, #ffed4a);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .ebook-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .ebook-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .ebook-subtitle {
+            font-size: 14px;
+            color: #a0a0b0;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* Form Section */
+        .optin-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 450px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .optin-section h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+
+        .optin-section p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 18px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .privacy-note {
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 50px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: #f8f9fa;
+            padding: 35px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .benefit-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* What's Inside Section */
+        .inside {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            padding: 80px 0;
+            color: white;
+        }
+
+        .inside .section-title {
+            color: white;
+        }
+
+        .inside-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .inside-item {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .inside-item .number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .inside-item h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .inside-item p {
+            color: #a0a0b0;
+            font-size: 14px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            display: inline-block;
+            padding: 20px 50px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f0f1a;
+            color: #666;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .ebook-showcase {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .ebook-mockup {
+                transform: none;
+                width: 240px;
+                height: 320px;
+            }
+
+            .optin-section {
+                padding: 30px 25px;
+                width: 100%;
+            }
+
+            .benefits-grid,
+            .inside-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">🎁 Free Download</div>
+            <h1>
+                Stop Using AI Like a Search Engine
+                <span class="highlight">Start Delegating Like a CEO</span>
+            </h1>
+            <p class="hero-subheadline">
+                The simple 3-level framework that transforms AI from a confusing toy into a reliable worker that gets things done while you focus on what matters.
+            </p>
+
+            <div class="ebook-showcase">
+                <!-- Ebook Mockup -->
+                <div class="ebook-mockup">
+                    <div class="ebook-icon">🤖</div>
+                    <div class="ebook-title">The AI Worker Blueprint</div>
+                    <div class="ebook-subtitle">How to Get AI to Do Tasks for You</div>
+                </div>
+
+                <!-- Opt-in Form -->
+                <div class="optin-section">
+                    <h3>Get Instant Access</h3>
+                    <p>Enter your email below and I'll send you the complete blueprint + 5 copy-paste prompts you can use today.</p>
+                    
+                    <form id="signup-form" action="https://api.globalcontrol.io/api/ai/contacts" method="POST">
+                        <div class="form-group">
+                            <label for="name">First Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Me The Blueprint →</button>
+                    </form>
+                    
+                    <p class="privacy-note">🔒 Your information is secure. Unsubscribe anytime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">What You'll Discover</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>The 3 Levels of AI</h3>
+                    <p>Understand exactly where you are now and what "Level 3" AI looks like. Most people are stuck at Level 1 without even knowing it.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📝</div>
+                    <h3>5 Copy-Paste Prompts</h3>
+                    <p>Ready-to-use delegation prompts for emails, content repurposing, weekly planning, objection handling, and research.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>The Delegation Mindset</h3>
+                    <p>Learn the critical difference between "using AI" and "delegating to AI" — this one shift changes everything.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Real Quick Wins</h3>
+                    <p>See a before/after example of how one prompt saves 30-45 minutes of work in under a minute.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔓</div>
+                    <h3>The Ceiling Breaker</h3>
+                    <p>Discover what becomes possible when you move past manual prompting and into true AI-powered systems.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💡</div>
+                    <h3>No Tech Skills Required</h3>
+                    <p>Everything in this blueprint works with free tools you already have access to. No coding, no complex setup.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Inside Section -->
+    <section class="inside">
+        <div class="container">
+            <h2 class="section-title">Inside The Blueprint</h2>
+            
+            <div class="inside-grid">
+                <div class="inside-item">
+                    <div class="number">01</div>
+                    <h4>The 3 Levels of AI</h4>
+                    <p>Chat AI → Task AI → Worker AI. Where are you?</p>
+                </div>
+
+                <div class="inside-item">
+                    <div class="number">02</div>
+                    <h4>Delegation vs Usage</h4>
+                    <p>The mindset reframe that unlocks real leverage</p>
+                </div>
+
+                <div class="inside-item">
+                    <div class="number">03</div>
+                    <h4>5 Worker Prompts</h4>
+                    <p>Copy, paste, and delegate immediately</p>
+                </div>
+
+                <div class="inside-item">
+                    <div class="number">04</div>
+                    <h4>Quick Win Example</h4>
+                    <p>See the 45-second transformation in action</p>
+                </div>
+
+                <div class="inside-item">
+                    <div class="number">05</div>
+                    <h4>What's Possible Next</h4>
+                    <p>The gap between faster and automatic</p>
+                </div>
+
+                <div class="inside-item">
+                    <div class="number">06</div>
+                    <h4>The Honest Truth</h4>
+                    <p>What nobody else tells you about AI ceilings</p>
+                </div>
+
+                <div class="inside-item">
+                    <div class="number">07</div>
+                    <h4>Your Next Step</h4>
+                    <p>How to put this into practice today</p>
+                </div>
+
+                <div class="inside-item">
+                    <div class="number">08</div>
+                    <h4>Bonus Opportunity</h4>
+                    <p>For those ready to go beyond prompts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Turn AI Into Your Worker?</h2>
+            <p>Join thousands of entrepreneurs who are delegating instead of doing. Get the blueprint free — instant download.</p>
+            <a href="#" class="btn-white" onclick="document.getElementById('name').focus(); return false;">Get The Blueprint Now →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Easy Traffic Secrets | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+        </div>
+    </footer>
+
+<script>
+// Thank you page URL
+const THANK_YOU_URL = 'https://ai-sessions-thankyou.vercel.app';
+
+document.getElementById('signup-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    
+    // Get form data
+    const firstName = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    
+    // Disable button during submission
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    
+    try {
+        // Use secure server-side API (no exposed keys)
+        const response = await fetch('/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstName: firstName,
+                email: email,
+                source: 'ai-worker-blueprint'
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.success) {
+            // Redirect to thank you page
+            window.location.href = THANK_YOU_URL;
+        } else {
+            throw new Error(data.error || 'Failed to subscribe');
+        }
+        
+    } catch (error) {
+        console.error('Signup error:', error);
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        alert('Something went wrong. Please try again or contact support.');
+    }
+});
+</script>
+
+</body>
+</html>
